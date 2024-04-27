@@ -32,11 +32,10 @@ public class MeetingService {
 		return session.getSession().get(Meeting.class, id);
 	}
 
-	public Meeting add(Meeting meeting) {
+	public void add(Meeting meeting) {
 		Transaction transaction = session.getSession().beginTransaction();
 		session.getSession().save(meeting);
 		transaction.commit();
-		return meeting;
 	}
 
 	public void update(Meeting meeting) {

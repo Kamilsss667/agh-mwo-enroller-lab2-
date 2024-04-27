@@ -34,17 +34,17 @@ public class MeetingRestController {
 		}
 		return new ResponseEntity<Meeting>(meeting, HttpStatus.OK);
 	}
-}
-//	@RequestMapping(value = "", method = RequestMethod.POST)
-//	public ResponseEntity<?> addMeeting(@RequestBody Meeting meeting) {
-//		if (meetingService.findByID(meeting.getID()) != null) {
-//			return new ResponseEntity<String>(
-//					"Unable to create. A meeting with id " + meeting.getID() + " already exist.",
-//					HttpStatus.CONFLICT);
-//		}
-//		meetingService.add(meeting);
-//		return new ResponseEntity<Meeting>(meeting, HttpStatus.CREATED);
-//	}
+
+	@RequestMapping(value = "", method = RequestMethod.POST)
+	public ResponseEntity<?> addMeeting(@RequestBody Meeting meeting) {
+		if (meetingService.findByID(meeting.getID()) != null) {
+			return new ResponseEntity<String>(
+					"Unable to create. A meeting with id " + meeting.getID() + " already exist.",
+					HttpStatus.CONFLICT);
+		}
+		meetingService.add(meeting);
+		return new ResponseEntity<Meeting>(meeting, HttpStatus.CREATED);
+	}
 //
 //	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 //	public ResponseEntity<?> delete(@PathVariable("id") String id) {
@@ -67,4 +67,4 @@ public class MeetingRestController {
 //		return new ResponseEntity<Participant>(HttpStatus.OK);
 //	}
 //
-//}
+}
